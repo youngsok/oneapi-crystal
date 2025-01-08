@@ -53,7 +53,7 @@ namespace crystal {
                 queue_tester(q);
 
             } catch(...){
-                dev = sycl::device(sycl::host_selector());
+                dev = sycl::device(sycl::cpu_selector());
                 q = sycl::queue(dev, exception_handler);
                 std::cerr << "[Warning] " << dev.get_info<sycl::info::device::name>()
                         << " found but not working! Fall back on "
@@ -61,7 +61,7 @@ namespace crystal {
             }
             
         } catch (...) {
-        dev = sycl::device(sycl::host_selector());
+        dev = sycl::device(sycl::cpu_selector());
         q = sycl::queue(dev, exception_handler);
 
         std::cerr << "[Warning] Expected device not found! Fall back on: " 
@@ -95,7 +95,7 @@ namespace crystal {
         try {
             dev = sycl::device(selector);
         } catch(...) {
-            dev = sycl::device(sycl::host_selector());
+            dev = sycl::device(sycl::cpu_selector());
             std::cerr << "[Warning] Expected device not found! Fall back on: " 
                     << dev.get_info<sycl::info::device::name>() << '\n';
         }
