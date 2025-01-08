@@ -131,7 +131,8 @@ void run_query(
  */
 int main(int argc, char** argv)
 { 
-  auto q = try_get_queue(sycl::default_selector{});
+  //auto q = try_get_queue(sycl::default_selector{});
+  auto q = try_get_queue(sycl::gpu_selector{});
 
   // device
   auto dev_name = q.get_device().get_info<sycl::info::device::name>();
