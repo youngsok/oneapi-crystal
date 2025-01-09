@@ -113,9 +113,13 @@ namespace crystal {
         sycl::queue &q
     ) 
     { 
+        printf("[%s] src = %p, size = %u, &q = %p\n", __func__, src, size, &q);
+
         try {
             T* dest;
-            dest = (T*)malloc_device(sizeof(T) * size, q);
+            //dest = (T*)malloc_device(sizeof(T) * size, q);
+            dest = (T*)malloc_host(sizeof(T) * size, q); // allocate pinned host memory
+            printf("[%s] dest = %p\n", __func__, dest);
 
             q.memcpy(dest, src, sizeof(T) * size).wait();
             return dest;
