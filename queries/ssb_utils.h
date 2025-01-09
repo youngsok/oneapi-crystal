@@ -4,9 +4,9 @@
 
 using namespace std;
 
-#define SF 1
+#define SF 10
 
-#define BASE_PATH "/home/u141905/sp/oneapi-crystal/ssb/data/"
+#define BASE_PATH "/home/youngsok/workspace/oneapi-crystal/ssb/data/"
 
 #if SF == 1
 #define DATA_DIR BASE_PATH "s1_columnar/"
